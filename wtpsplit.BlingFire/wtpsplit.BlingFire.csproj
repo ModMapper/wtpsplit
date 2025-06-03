@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <IsPackable>True</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\wtpsplit\wtpsplit.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <None Include="runtimes\win-x64\native\*" Pack="true" PackagePath="runtimes\win-x64\native" PackageCopyToOutput="true" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="runtimes\win-arm64\native\*" Pack="true" PackagePath="runtimes\win-arm64\native" PackageCopyToOutput="true" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="runtimes\osx-x64\native\*" Pack="true" PackagePath="runtimes\osx-x64\native" PackageCopyToOutput="true" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="runtimes\osx-arm64\native\*" Pack="true" PackagePath="runtimes\osx-arm64\native" PackageCopyToOutput="true" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="runtimes\linux-x64\native\*" Pack="true" PackagePath="runtimes\linux-x64\native" PackageCopyToOutput="true" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="runtimes\linux-arm64\native\*" Pack="true" PackagePath="runtimes\linux-arm64\native" PackageCopyToOutput="true" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="runtimes\linux-arm64\native\libblingfiretokdll.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="runtimes\linux-x64\native\libblingfiretokdll.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="runtimes\osx-arm64\native\libblingfiretokdll.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="runtimes\osx-x64\native\libblingfiretokdll.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="runtimes\win-arm64\native\blingfiretokdll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="runtimes\win-x64\native\blingfiretokdll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+	
+</Project>
